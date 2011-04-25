@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>SPI Test</title>
+<link rel="stylesheet" href="css/main.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.tmpl.js"></script>
+<script type="text/javascript" src="js/knockout.js"></script>
+<script type="text/javascript" src="js/knockout.namespaces.js"></script>
+<script type="text/javascript" src="js/koExternalTemplateEngine.js"></script>
+<script type="text/javascript" src="js/knockout_bindings.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+    <div id="menu">
+        <ul>
+            <li data-bind="click: function() { VM.actualTemplate('main#index')}">Main</li>
+            <li data-bind="click: function() { VM.actualTemplate('users#index')}">Users</li>
+            <li data-bind="click: function() { VM.actualTemplate('cars#index')}">Cars</li>
+            <li data-bind="click: function() { VM.actualTemplate('admin#index')}">Admin</li>
+            <li data-bind="click: function() { VM.actualTemplate('about#index')}">About</li>
+        </ul>
+    </div>
+    <div id="content" data-bind="template: {name: templateMode}">
+    </div>
+</body>
+</html>
+
