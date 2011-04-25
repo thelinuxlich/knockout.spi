@@ -57,6 +57,8 @@ VM.loadScript = function(route,file,object,namespace) {
 };
 
 VM.actualTemplate.subscribe(function(value){
+    console.log(value);
+    $.address.value(value.replace("#",":"));
     var route = value.split("#");
     VM.loadScript(value,routes[route[0]][route[1]]["file"], capitaliseFirstLetter(route[0])+"VM",route[0]);
 });
@@ -68,5 +70,10 @@ $(function(){
         templateSuffix: ".html"
   });
   ko.applyBindings(VM);
+  $.address.init(function(e) {
+    $.address.value("main:index");
+  }).change(function(e){
+    VM.actualTemplate(e.value.replace("/","").replace(":","#"));
+  });
 });
 
