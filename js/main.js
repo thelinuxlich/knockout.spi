@@ -29,7 +29,7 @@ $(function(){
   ko.applyBindings(VM);
   $.address.init(function(e) {
     VM.actualTemplate("main/index");
-  }).change(function(e){
+  }).externalChange(function(e){
     VM.actualTemplate(e.value.replace(/^\//,"").replace(":","/"));
   });
 });
