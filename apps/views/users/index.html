@@ -1,0 +1,9 @@
+<p>This is the Users page.</p>
+<div data-bind-users="text: someVar"></div>
+<p>A list of Users</p>
+<ul>
+    <li data-bind="click: function() { VM.actualTemplate('users/show?id=1')}">User 1</li>
+    <li data-bind="click: function() { VM.actualTemplate('users/show?id=2')}">User 2</li>
+</ul>    
+<script type="text/javascript" src="js/viewmodels/users/index.js"></script>
+
