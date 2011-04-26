@@ -1,4 +1,4 @@
-var UsersVM = { 
+var UsersVM = {
   name: KO("")
 };
 
@@ -16,3 +16,4 @@ $(function(){
     }
   },0);
 });
+
