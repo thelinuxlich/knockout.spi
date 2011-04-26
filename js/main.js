@@ -16,7 +16,9 @@ VM.templateMode = function() {
     } else {
       VM.templateParams = {};
     }
+    $.address.autoUpdate(false);
     $.address.value(tmpl.replace("/",":"));
+    $.address.autoUpdate(true);
     return url[0];
 };
 
@@ -29,8 +31,8 @@ $(function(){
   ko.applyBindings(VM);
   $.address.init(function(e) {
     VM.actualTemplate("main/index");
-  }).externalChange(function(e){
-    VM.actualTemplate(e.value.replace(/^\//,"").replace(":","/"));
+  }).change(function(e){
+      VM.actualTemplate(e.value.replace(/^\//,"").replace(":","/"));
   });
 });
 
