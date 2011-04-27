@@ -2,6 +2,10 @@ var UsersVM = {
   name: KO("")
 };
 
+UsersVM.name.subscribe(function(value){
+  console.log("updated");
+});
+
 $(function(){
   setTimeout(function(){
     ko.applyBindings(UsersVM,"users");

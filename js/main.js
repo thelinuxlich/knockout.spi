@@ -1,7 +1,9 @@
 var VM = {
   someVar: "Hello, a binding from main page.",
   templateParams: {},
-  actualTemplate: KO("main/index")
+  actualTemplate: KO("main/index"),
+  updateTemplate: false,
+  updateAddress: false
 };
 
 VM.templateMode = function() {
@@ -16,9 +18,12 @@ VM.templateMode = function() {
     } else {
       VM.templateParams = {};
     }
-    $.address.autoUpdate(false);
-    $.address.value(tmpl.replace("/",":"));
-    $.address.autoUpdate(true);
+    if(VM.updateTemplate !== false) {
+      VM.updateAddress = false;
+      $.address.value(tmpl.replace("/",":"));
+    } else {
+      VM.updateTemplate = true;
+    } 
     return url[0];
 };
 
@@ -30,9 +35,15 @@ $(function(){
   });
   ko.applyBindings(VM);
   $.address.init(function(e) {
+    VM.updateTemplate = true;
     VM.actualTemplate("main/index");
-  }).change(function(e){
-      VM.actualTemplate(e.value.replace(/^\//,"").replace(":","/"));
+  }).externalChange(function(e){
+      if(VM.updateAddress !== false) {
+        VM.updateTemplate = false;
+        VM.actualTemplate(e.value.replace(/^\//,"").replace(":","/"));
+      } else {
+        VM.updateAddress = true;
+      } 
   });
 });
 
