@@ -34,6 +34,8 @@ $(function(){
         templateSuffix: ".html"
   });
   ko.applyBindings(VM);
+  $.address.crawlable(true);
+  $.address.strict(false);
   $.address.init(function(e) {
     VM.updateTemplate = true;
     VM.actualTemplate("main/index");
